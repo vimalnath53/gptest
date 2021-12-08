@@ -9,10 +9,27 @@ error_reporting(E_ALL);
 
 
 <!DOCTYPE html>
-
+<head>
+  <title>Braintree Google Pay demo (Sandbox)</title>
+   <h1>Google Pay Demo!</h1>
+  <style>
+  #google-pay-button {
+    background-color: #3dcc6f;
+    font-size: 18.5px;
+    position: absolute;
+    margin-top: 30px;
+    width: 20%;
+    border-radius: 3px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+  </style>
+</head>
 
 <div id="container"></div>
-<button id="google-pay-button"/>Pay with Google
+<div id="google-pay-button"/>COMPLETE PURCHASE</div>
  <script src="https://pay.google.com/gp/p/js/pay.js"></script>
 <script src="https://js.braintreegateway.com/web/3.84.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.84.0/js/google-payment.min.js"></script>
@@ -43,7 +60,7 @@ braintree.client.create({
       transactionInfo: {
         currencyCode: 'USD',
         totalPriceStatus: 'FINAL',
-        totalPrice: '100.00'
+        totalPrice: '0.01'
       }
     });
 
@@ -52,7 +69,7 @@ braintree.client.create({
     }).then(function (result) {
       // send result.nonce to your server
       console.log(result);
-     // window.location.href = 'checkout_discount.php?nounce='+result.nonce;
+      window.location.href = 'checkout_discount.php?nounce='+result.nonce;
     }).catch(function (err) {
       // handle err
     });
